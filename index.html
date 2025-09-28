@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ficha Médica - Ingreso de Pacientes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Ficha Médica — Ingreso de Pacientes</h1>
+    <p class="subtitle">PRO402 · Verificación y Validación</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Formulario</h2>
+      <form id="fichaForm" novalidate>
+        <div class="grid">
+          <label>RUT
+            <input type="text" id="rut" name="rut" placeholder="12.345.678-5" required />
+            <small class="hint">Formato: 12345678-5 o 12.345.678-5</small>
+          </label>
+
+          <label>Nombres
+            <input type="text" id="nombres" name="nombres" placeholder="Juan Carlos" required />
+          </label>
+
+          <label>Apellidos
+            <input type="text" id="apellidos" name="apellidos" placeholder="Pérez Soto" required />
+          </label>
+
+          <label>Dirección
+            <input type="text" id="direccion" name="direccion" placeholder="Av. Siempre Viva 123" required />
+          </label>
+
+          <label>Ciudad
+            <input type="text" id="ciudad" name="ciudad" placeholder="Santiago" required />
+          </label>
+
+          <label>Teléfono
+            <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required />
+            <small class="hint">Solo dígitos, 8–12 caracteres</small>
+          </label>
+
+          <label>Email
+            <input type="email" id="email" name="email" placeholder="nombre@dominio.cl" required />
+          </label>
+
+          <label>Fecha de Nacimiento
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required />
+          </label>
+
+          <label>Estado Civil
+            <select id="estadoCivil" name="estadoCivil" required>
+              <option value="">Seleccione…</option>
+              <option value="Soltero/a">Soltero/a</option>
+              <option value="Casado/a">Casado/a</option>
+              <option value="Divorciado/a">Divorciado/a</option>
+              <option value="Viudo/a">Viudo/a</option>
+              <option value="Conviviente">Conviviente</option>
+            </select>
+          </label>
+
+          <label class="full">Comentarios
+            <textarea id="comentarios" name="comentarios" rows="3" placeholder="Antecedentes relevantes, alergias, etc."></textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="btnGuardar">Guardar</button>
+          <button type="button" id="btnLimpiar" class="secondary">Limpiar</button>
+          <button type="button" id="btnCerrar" class="danger">Cerrar</button>
+        </div>
+
+        <div id="formMsg" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Buscar por Apellido</h2>
+      <div class="searchRow">
+        <input type="text" id="busquedaApellido" placeholder="Escribe un apellido (por ej. Pérez)" />
+        <button id="btnBuscar">Buscar</button>
+        <button id="btnLimpiarBusqueda" class="secondary">Limpiar</button>
+      </div>
+
+      <table id="tablaResultados" class="table">
+        <thead>
+          <tr>
+            <th>RUT</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Ciudad</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="contadorResultados" class="muted"></p>
+    </section>
+
+    <section class="card">
+      <h2>Ayuda rápida</h2>
+      <ul>
+        <li>Todos los campos (excepto comentarios) son obligatorios y validados.</li>
+        <li>Si ingresas un RUT existente, se te consultará si deseas sobrescribir el registro.</li>
+        <li>La búsqueda por apellido no distingue mayúsculas/minúsculas y acepta coincidencias parciales.</li>
+        <li>Los datos se guardan en tu navegador (localStorage) para facilitar la evaluación.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; <span id="year"></span> PRO402 — Taller de Testing</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
